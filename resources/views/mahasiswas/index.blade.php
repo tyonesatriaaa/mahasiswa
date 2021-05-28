@@ -32,18 +32,18 @@
             <th>Nama</th> 
             <th>Kelas</th> 
             <th>Jurusan</th> 
-            <th>No_Handphone</th> 
+            <!-- <th>No_Handphone</th> 
             <th>Email</th>
-            <th>Tanggal Lahir</th>
+            <th>Tanggal Lahir</th> -->
             <th width="280px">Action</th> 
-        </tr> @foreach ($mahasiswas as $Mahasiswa) <tr> 
+        </tr> @foreach ($paginate as $Mahasiswa) <tr> 
             <td>{{ $Mahasiswa->Nim }}</td> 
             <td>{{ $Mahasiswa->Nama }}</td> 
-            <td>{{ $Mahasiswa->Kelas }}</td> 
+            <td>{{ $Mahasiswa->kelas->nama_kelas }}</td> 
             <td>{{ $Mahasiswa->Jurusan }}</td> 
-            <td>{{ $Mahasiswa->No_Handphone }}</td>
+            <!-- <td>{{ $Mahasiswa->No_Handphone }}</td>
             <td>{{ $Mahasiswa->email }}</td> 
-            <td>{{ $Mahasiswa->tgl_lahir }}</td>
+            <td>{{ $Mahasiswa->tgl_lahir }}</td> -->
             <td> <form action="{{ route('mahasiswas.destroy',$Mahasiswa->Nim) }}" method="POST"> 
             <a class="btn btn-info" href="{{ route('mahasiswas.show',$Mahasiswa->Nim) }}">Show</a> 
             <a class="btn btn-primary" href="{{ route('mahasiswas.edit',$Mahasiswa->Nim) }}">Edit</a> 
@@ -51,11 +51,12 @@
             @method('DELETE') 
             <button type="submit" class="btn btn-danger">Delete</button> 
         </form> 
+
     </td> 
 </tr> 
+
 @endforeach 
+
 </table> 
-    <div class="d-flex" >
-        {{ $mahasiswas->links() }}
-    </div>
+
 @endsection
